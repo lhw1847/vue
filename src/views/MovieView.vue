@@ -56,7 +56,8 @@
                   ><img
                     :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
                     :alt="movie.title"
-                /></a>
+                  />
+                </a>
                 <p class="title">{{ movie.title }}</p>
               </li>
             </ul>
@@ -88,7 +89,7 @@ export default {
     Swiper,
     SwiperSlide,
   },
-
+  methods: {},
   setup() {
     const movies = ref([]);
     const popular = ref([]);
@@ -109,7 +110,7 @@ export default {
           search.value = "";
         })
         .catch((error) => console.log("error", error));
-      // console.log(movies);
+      console.log();
     };
     SearchMovies();
     const TopMovies = () => {
@@ -128,7 +129,6 @@ export default {
           search.value = "";
         })
         .catch((error) => console.log("error", error));
-      console.log(popular);
     };
     TopMovies();
 

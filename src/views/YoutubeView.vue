@@ -65,7 +65,7 @@ export default {
 
   setup() {
     const movies = ref("");
-    const search = ref("");
+    const search = ref("숏박스");
     const SearchMovies = () => {
       var requestOptions = {
         method: "GET",
@@ -73,11 +73,14 @@ export default {
       };
 
       fetch(
-        "https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=30&q=숏박스&key=AIzaSyBFmDKyMThldJWBpgNzHFEqMZjTkpQdGyg",
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=30&q=${search.value}&key=AIzaSyBFmDKyMThldJWBpgNzHFEqMZjTkpQdGyg`,
         requestOptions
       )
         .then((response) => response.json())
-        .then((data) => (movies.value = data.items))
+        .then((data) => {
+          movies.value = data.items;
+          search.value = "";
+        })
         .catch((error) => console.log("error", error));
       console.log(movies);
     };
